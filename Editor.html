@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="Editor.css" />
+  </head>
+
+  <body>
+  <div id="radiogroup" class="form_radio_group">
+		<div class="form_radio_group-item">
+			<input id="radio-1" type="radio" name="radio" value="1" checked>
+			<label for="radio-1">Tab 1</label>
+		</div>
+		<div class="form_radio_group-item">
+			<input id="radio-2" type="radio" name="radio" value="2" >
+			<label for="radio-2">Tab 1</label>
+		</div>
+		
+		<button id="add" class="buttonAdd">+</button>
+			
+		
+	
+	</div>
+	<div id="sidebar">
+		<div class="toggle-btn" onclick="toggleSidebar(this)">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>  
+	<div class="list">
+		<div class="item">
+			<input value="one" type="image" name="btn" src="img/one.png" alt="text">  
+			<input value="two" type="image" name="btn" src="img/two.png" alt="text">  
+			<input value="three" type="image" name="btn" src="img/three.png" alt="text">  
+			
+			<div id="toolbox">
+			  <input type="file" id="hidden-file-upload">
+			  <input id="upload-input" type="image" title="upload graph" src="upload-icon.png" alt="upload graph"> 
+			  <input type="image" id="download-input" title="download graph" src="download-icon.png" alt="download graph"> 
+			  <input type="image" id="delete-graph" title="delete graph" src="trash-icon.png" alt="delete graph"> 
+			</div>
+		</div>
+		<div id="info" class="item">Properties</div>
+	
+	</div>
+	</div>
+	
+	
+    <script src="d3.v3.js" charset="utf-8"></script>
+    <script src="Editor.js"></script>
+	
+	
+  </body>
+
+</html>

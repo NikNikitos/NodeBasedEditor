@@ -1,0 +1,182 @@
+* {
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+.container rect {
+	 fill: #676FA3;
+	
+    stroke-width: 2px;
+	
+}
+.container{
+	-webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+}
+.connector {
+	fill: #CDDEFF;
+
+    stroke-width: 2px;
+	
+}
+.connector:hover {
+     fill: #FF5959;
+	stroke-width: 3px;
+}
+.container text{
+    pointer-events: none;
+}
+
+marker{
+    fill: #333;
+}
+
+g.conceptG rect{
+    fill: #F6FBFF;
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+g.conceptG:hover rect{
+    fill: rgb(200, 238, 241);
+}
+
+g.selected rect{
+    fill: rgb(250, 232, 255);
+}
+g.selected:hover rect{
+    fill: rgb(250, 232, 255);
+}
+
+
+
+g.selected rect{
+    fill: rgb(250, 232, 255);
+}
+g.selected:hover rect{
+    fill: rgb(250, 232, 255);
+}
+
+
+path.link {
+    fill: none;
+    stroke: #333;
+    stroke-width: 6px;
+    cursor: default;
+}
+
+path.link:hover{
+    stroke: rgb(94, 196, 204);
+}
+
+g.connect-node rect{
+    fill: #BEFFFF;
+}
+
+path.link.hidden{
+    stroke-width: 0;
+}
+
+path.link.selected {
+    stroke: rgb(229, 172, 247);
+}
+
+
+
+
+#sidebar {
+  position:absolute;
+  top:0px;
+  left:-200px;
+  width:200px;
+  height:100%;
+  background:#2C3333;
+  transition:all 300ms linear;
+}
+#sidebar.active {
+  left:0px;
+}
+#sidebar .toggle-btn {
+  position:absolute;
+  left:220px;
+  top:10px;
+}
+#sidebar .toggle-btn span {
+  display:block;
+  width:30px;
+  height:5px;
+  background:#151719;
+  margin:5px 0px;
+  cursor:pointer;
+}
+#sidebar div.list div.item {
+  padding:15px 10px;
+  border-bottom:1px solid #444;
+  color:#fcfcfc;
+  text-transform:uppercase;
+  font-size:15px;
+}
+.buttonAdd {
+  background-color: #676FA3;
+  border: none;
+  color: white;
+ 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+  border-radius: 50%;
+}
+.form_radio_group {
+	margin: 0 auto;
+     max-width: 700px;
+}
+.form_radio_group-item {
+	display: inline-block;
+	float: left;    
+}
+.form_radio_group input[type=radio] {
+	display: none;
+}
+.form_radio_group label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-right: none;
+	user-select: none;
+}
+ 
+.form_radio_group .form_radio_group-item:first-child label {
+	border-radius: 6px 0 0 6px;
+}
+.form_radio_group .form_radio_group-item:last-child label {
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #999;
+}
+ 
+/* Checked */
+.form_radio_group input[type=radio]:checked + label {
+	background: #CDDEFF;
+}
+ 
+/* Hover */
+.form_radio_group label:hover {
+	color: #666;
+}
+ 
+/* Disabled */
+.form_radio_group input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}
+#toolbox{
+
+  display: none;
+
+}
