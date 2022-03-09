@@ -4,6 +4,28 @@ function toggleSidebar(ref){
 
 document.onload = (function(d3, saveAs, Blob, undefined){
     "use strict";
+	
+	class Diagram {
+		id;
+		nodes;
+		edges;
+		entities;
+		
+		constructor(id, nodes, edges, entities) {
+			this.id = id;
+			this.nodes = nodes;
+			this.edges = edges;
+			this.entities = entities;
+		}
+
+		showAll() {
+			console.log(id,nodes,edges,entities);
+		}
+
+		}
+	
+	var Diagrams = [];
+	var PreviusTab = 0;
  
     // define graphcreator object
     var GraphCreator = function(svg, nodes, edges, entities){
@@ -14,6 +36,8 @@ document.onload = (function(d3, saveAs, Blob, undefined){
       thisGraph.edges = edges || [];
 	  thisGraph.entities = entities || [];
 	  
+	
+	Diagrams.push(new Diagram(1, thisGraph.nodes, thisGraph.edges, thisGraph.entities));
 	
 	
       
@@ -135,6 +159,49 @@ document.onload = (function(d3, saveAs, Blob, undefined){
 		
 		
 		d3.selectAll("input[name='radio']").on("change", function(){
+			
+			var diagramElement;
+			var previous = PreviusTab;
+			
+			for (var i =0; i <Diagrams.length; i++){
+				if (Diagrams[i].id == target.value){
+					diagramElement = i;
+					PreviusTab = i;
+				}
+			}
+			console.log(previous);
+			Diagrams[previous].nodes = thisGraph.nodes;
+			Diagrams[previous].edges = thisGraph.edges;
+			Diagrams[previous].entities = thisGraph.entities;
+			
+			thisGraph.nodes = [];
+			thisGraph.edges = [];
+			thisGraph.entities = [];
+			thisGraph.updateGraph();
+			
+			if (Diagrams[diagramElement].nodes != null){
+				
+			thisGraph.nodes = Diagrams[diagramElement].nodes;
+			thisGraph.edges = Diagrams[diagramElement].edges;
+			thisGraph.entities = Diagrams[diagramElement].entities;
+			thisGraph.updateGraph();
+			}
+			
+			//Diagrams[previus] = {diagramElement, thisGraph.nodes, thisGraph.edges, thisGraph.entities};
+			//console.log(Diagrams[previous]);
+			//Diagrams.push(new Diagram(1, thisGraph.nodes, thisGraph.edges, thisGraph.entities));
+			//if (typeof Diagrams[target.value] === 'undefined'){
+				//console.log(Diagrams.indexOf(target.value))
+				//Diagrams.push(new Diagram(1, thisGraph.nodes, thisGraph.edges, thisGraph.entities));
+			//}
+				//console.log(diagramElement)
+				//Diagrams.push(new Diagram(1, thisGraph.nodes, thisGraph.edges, thisGraph.entities));
+			
+			
+			
+			
+			
+			/*
          var saveEdges = [];
         thisGraph.edges.forEach(function(val, i){
           saveEdges.push({source: val.source.id, target: val.target.id});
@@ -170,9 +237,8 @@ document.onload = (function(d3, saveAs, Blob, undefined){
           };
           filereader.readAsText(uploadFile);
           
-        } else {
-          alert("Your browser won't let you save this graph -- try upgrading your browser to IE 10+ or Chrome or Firefox.");
-        }
+       
+	   */
       });
 	}
       // handle uploaded data
@@ -260,6 +326,7 @@ document.onload = (function(d3, saveAs, Blob, undefined){
       if(doDelete){
         thisGraph.nodes = [];
         thisGraph.edges = [];
+		thisGraph.entities = [];
         thisGraph.updateGraph();
       }
     };
@@ -834,7 +901,7 @@ sel.data(result).exit().remove();
 	var rootTabs = d3.select(".form_radio_group");
 	
 	add.onclick = function() {
-		console.log(this.id);
+		
 		addTab();
 	};
 	
@@ -850,6 +917,7 @@ sel.data(result).exit().remove();
 	}
 	
 	function addTab(){
+		
 		
 		var tabsId = getTabsLength();
 		var wrapper = rootTabs.append("div")
@@ -878,6 +946,9 @@ sel.data(result).exit().remove();
         
         //saveGraph(this);
       //});
+	  
+	  Diagrams.push(new Diagram(tabsId, null, null, null));
+	  
 	}
 	
 	function  saveGraph(val){
